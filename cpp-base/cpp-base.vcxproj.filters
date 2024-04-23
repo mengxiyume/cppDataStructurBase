@@ -35,5 +35,8 @@
     <ClInclude Include="DoubleLinkList.h">
       <Filter>LinkList</Filter>
     </ClInclude>
+    <ClInclude Include="LinkList.h">
+      <Filter>LinkList</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

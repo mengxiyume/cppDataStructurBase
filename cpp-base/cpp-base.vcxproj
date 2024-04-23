@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DoubleLinkList.h" />
+    <ClInclude Include="LinkList.h" />
     <ClInclude Include="SingleLinkList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

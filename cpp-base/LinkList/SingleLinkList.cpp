@@ -40,6 +40,9 @@ SLList::SingleLinkList() {
 	//首尾节点初始化
 	pFront = nullptr;
 	pBack = nullptr;
+
+	this->front = nullptr;
+	this->back = nullptr;
 }
 
 SLList::~SingleLinkList() {
@@ -55,6 +58,8 @@ SLList::~SingleLinkList() {
 
 	//所有记录指针归零
 	pHead = pFront = pBack = nullptr;
+	this->front = nullptr;
+	this->back = nullptr;
 }
 
 #pragma endregion
@@ -75,8 +80,8 @@ void SLList::pushFront(SLData value) {
 	pHead->next = newNode;
 
 	//其他记录指针的处理
-	pFront = pHead->next;							//首节点的更新
-	pBack = pBack != nullptr ? pBack : newNode;		//尾节点的更新
+	this->front = pFront = pHead->next;							//首节点的更新
+	this->back = pBack = pBack != nullptr ? pBack : newNode;	//尾节点的更新
 }
 /// <summary>
 /// 从链表尾部节点进行插入
@@ -93,8 +98,8 @@ void SLList::pushBack(SLData value) {
 	prevNode->next = newNode;
 
 	//其他记录指针的处理
-	pFront = pFront != nullptr ? pFront : newNode;	//首节点的更新
-	pBack = newNode;								//尾节点的更新
+	this->front = pFront = pFront != nullptr ? pFront : newNode;	//首节点的更新
+	this->back = pBack = newNode;									//尾节点的更新
 }
 
 /// <summary>
@@ -111,8 +116,8 @@ void SLList::popFront() {
 	free(pFront);
 
 	//其他记录指针的处理
-	pFront = pHead->next;							//首节点的更新
-	pBack = pFront != nullptr ? pBack : nullptr;	//尾节点的更新
+	this->front = pFront = pHead->next;							//首节点的更新
+	this->back = pBack = pFront != nullptr ? pBack : nullptr;	//尾节点的更新
 }
 /// <summary>
 /// 删除链表的最后一个有效节点
@@ -132,24 +137,24 @@ void SLList::popBack() {
 	last->next = nullptr;
 
 	//其他记录指针的处理
-	pFront = pHead->next;							//首节点的更新
-	pBack = last;									//尾节点的更新
+	this->front = pFront = pHead->next;							//首节点的更新
+	this->back = pBack = last;									//尾节点的更新
 }
 
-/// <summary>
-/// 获取当前链表的第一个有效节点
-/// </summary>
-/// <returns>节点指针 | 无有效节点时返回nullptr</returns>
-SLList::node* SLList::getFront() {
-	return pFront;
-}
-/// <summary>
-/// 获取当前链表的最后一个有效节点
-/// </summary>
-/// <returns>节点指针 | 无有效节点时返回nullptr</returns>
-SLList::node* SLList::getBack() {
-	return pBack;
-}
+///// <summary>
+///// 获取当前链表的第一个有效节点
+///// </summary>
+///// <returns>节点指针 | 无有效节点时返回nullptr</returns>
+//SLList::node* SLList::getFront() {
+//	return pFront;
+//}
+///// <summary>
+///// 获取当前链表的最后一个有效节点
+///// </summary>
+///// <returns>节点指针 | 无有效节点时返回nullptr</returns>
+//SLList::node* SLList::getBack() {
+//	return pBack;
+//}
 
 //TODO:	根据数据查找节点
 

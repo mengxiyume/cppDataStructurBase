@@ -35,6 +35,9 @@ DLList::DoubleLinkList() {
 	//头节点循环链接初始化
 	pHead->next = pHead;
 	pHead->prev = pHead;
+
+	this->front = nullptr;
+	this->back = nullptr;
 }
 
 DLList::~DoubleLinkList() {
@@ -55,6 +58,8 @@ DLList::~DoubleLinkList() {
 
 	//指针归零
 	pHead = nullptr;
+	this->front = nullptr;
+	this->back = nullptr;
 }
 
 #pragma endregion
@@ -75,6 +80,10 @@ void DLList::pushFront(DLData value) {
 	newNode->prev = pHead;
 	pHead->next->prev = newNode;
 	pHead->next = newNode;
+
+	//表面值更新
+	this->front = pHead->next;
+	this->back = pHead->prev;
 }
 /// <summary>
 /// 从链表尾部节点进行插入
@@ -90,6 +99,10 @@ void DLList::pushBack(DLData value) {
 	newNode->prev = pHead->prev;
 	pHead->prev->next = newNode;
 	pHead->prev = newNode;
+
+	//表面值更新
+	this->front = pHead->next;
+	this->back = pHead->prev;
 }
 
 /// <summary>
@@ -106,6 +119,10 @@ void DLList::popFront() {
 
 	//回收占用空间
 	free(delNode);
+
+	//表面值更新
+	this->front = pHead->next != pHead ? pHead->next : nullptr;
+	this->back = pHead->next != pHead ? pHead->prev : nullptr;
 }
 /// <summary>
 /// 删除链表的最后一个有效节点
@@ -121,22 +138,26 @@ void DLList::popBack() {
 
 	//回收占用空间
 	free(delNode);
+
+	//表面值更新
+	this->front = pHead->next != pHead ? pHead->next : nullptr;
+	this->back = pHead->next != pHead ? pHead->prev : nullptr;
 }
 
-/// <summary>
-/// 获取当前链表的第一个有效节点
-/// </summary>
-/// <returns>节点指针 | 无有效节点时返回nullptr</returns>
-DLList::node* DLList::getFront() {
-	return pHead->next;
-}
-/// <summary>
-/// 获取当前链表的最后一个有效节点
-/// </summary>
-/// <returns>节点指针 | 无有效节点时返回nullptr</returns>
-DLList::node* DLList::getBack() {
-	return pHead->prev;
-}
+///// <summary>
+///// 获取当前链表的第一个有效节点
+///// </summary>
+///// <returns>节点指针 | 无有效节点时返回nullptr</returns>
+//DLList::node* DLList::getFront() {
+//	return pHead->next;
+//}
+///// <summary>
+///// 获取当前链表的最后一个有效节点
+///// </summary>
+///// <returns>节点指针 | 无有效节点时返回nullptr</returns>
+//DLList::node* DLList::getBack() {
+//	return pHead->prev;
+//}
 
 //TODO:	根据数据查找节点
 

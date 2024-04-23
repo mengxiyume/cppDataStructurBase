@@ -141,12 +141,14 @@
   <ItemGroup>
     <ClCompile Include="LinkList\DoubleLinkList.cpp" />
     <ClCompile Include="LinkList\SingleLinkList.cpp" />
+    <ClCompile Include="SequenceTable\SequenceTable.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkList\DoubleLinkList.h" />
     <ClInclude Include="LinkList\LinkList.h" />
     <ClInclude Include="LinkList\SingleLinkList.h" />
+    <ClInclude Include="SequenceTable\SequenceTable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -136,6 +136,8 @@ void LinkListTest_04() {
 #pragma region Ë³Ðò±í
 //SequenceTable
 
+#include "./SequenceTable/SequenceTable.h"
+
 void SequeneceTableTest_01() {
 
 }

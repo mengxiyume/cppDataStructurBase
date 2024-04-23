@@ -1,7 +1,7 @@
 #pragma once
 
-//数据类型及相应指针命名
-typedef int DoubleLinkListDataType, * pDoubleLinkListDataType, DLData, * pDLData;
+//双链表存储数据的类型
+typedef int DoubleLinkListDataType, DLData;
 
 /// <summary>
 /// 双链表类
@@ -31,6 +31,14 @@ public:
 		struct Node* prev;	//上一个节点的地址
 		struct Node* next;	//下一个节点的地址
 	}Node, node;
+
+	/*--------------------------------------//
+	* 请不要自行更改该指针指向的内容		//
+	* 表面值，更改不影响实际结构			//
+	* 调用内置函数更改结构后覆写 */			//
+	node* front;	//链表第一个有效节点	//
+	node* back;		//链表最后一个有效节点	//
+	/*--------------------------------------*/
 
 #pragma region 构造相关重载
 
@@ -63,16 +71,16 @@ public:
 	/// </summary>
 	void popBack();
 
-	/// <summary>
-	/// 获取当前链表的第一个有效节点
-	/// </summary>
-	/// <returns>节点指针 | 无有效节点时返回nullptr</returns>
-	node* getFront();
-	/// <summary>
-	/// 获取当前链表的最后一个有效节点
-	/// </summary>
-	/// <returns>节点指针 | 无有效节点时返回nullptr</returns>
-	node* getBack();
+	///// <summary>
+	///// 获取当前链表的第一个有效节点
+	///// </summary>
+	///// <returns>节点指针 | 无有效节点时返回nullptr</returns>
+	//node* getFront();
+	///// <summary>
+	///// 获取当前链表的最后一个有效节点
+	///// </summary>
+	///// <returns>节点指针 | 无有效节点时返回nullptr</returns>
+	//node* getBack();
 
 	/// <summary>
 	/// 将链表中的内容打印
@@ -81,4 +89,4 @@ public:
 
 #pragma endregion
 
-}DLList, *pDLList;
+}DLList;

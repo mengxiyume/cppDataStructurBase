@@ -22,6 +22,9 @@
     <Filter Include="LinkList\sourse">
       <UniqueIdentifier>{97b714c5-5b0b-4876-bdc5-caf93f83d121}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SequenceTable">
+      <UniqueIdentifier>{51911f82-1f71-4c6b-8441-7d87ee8c868f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.cpp">
@@ -33,6 +36,9 @@
     <ClCompile Include="LinkList\DoubleLinkList.cpp">
       <Filter>LinkList\sourse</Filter>
     </ClCompile>
+    <ClCompile Include="SequenceTable\SequenceTable.cpp">
+      <Filter>SequenceTable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkList\DoubleLinkList.h">
@@ -43,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="LinkList\LinkList.h">
       <Filter>LinkList</Filter>
+    </ClInclude>
+    <ClInclude Include="SequenceTable\SequenceTable.h">
+      <Filter>SequenceTable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

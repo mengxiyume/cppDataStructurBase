@@ -12,5 +12,6 @@ typedef DoubleLinkListDataType LinkListDataType;
 typedef DLList LinkList;
 #endif
 
-typedef LinkListDataType LLData, * pLLData;
-typedef LinkList LList, * pLList;
+//请使用这些名字
+typedef LinkListDataType LLData;
+typedef LinkList LList;

@@ -24,9 +24,15 @@
     <ClCompile Include="SingleLinkList.cpp">
       <Filter>LinkList</Filter>
     </ClCompile>
+    <ClCompile Include="DoubleLinkList.cpp">
+      <Filter>LinkList</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingleLinkList.h">
+      <Filter>LinkList</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleLinkList.h">
       <Filter>LinkList</Filter>
     </ClInclude>
   </ItemGroup>

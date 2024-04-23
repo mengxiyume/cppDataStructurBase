@@ -9,19 +9,29 @@ using namespace std;
 
 #include "SingleLinkList.h"
 
+#pragma region private
+
+SLList::node* pHead;	//链表头
+SLList::node* pFront;	//链表第一个有效节点
+SLList::node* pBack;	//链表最后一个有效节点
 
 /// <summary>
 /// 申请一个链表节点
 /// <para>*申请失败报错*</para>
 /// </summary>
 /// <returns>已申请的节点</returns>
-SLList::node* SLList::buyOneNode() {
-	node* temp = (node*)malloc(sizeof(node));
+SLList::node* buyOneNode() {
+	SLList::node* temp = (SLList::node*)malloc(sizeof(SLList::node));
 	assert(temp);
 	return temp;
 }
 
+#pragma endregion
+
+#pragma region public
+
 #pragma region 构造相关重载
+
 SLList::SingleLinkList() {
 	//头节点空间申请
 	pHead = buyOneNode();
@@ -46,6 +56,7 @@ SLList::~SingleLinkList() {
 	//所有记录指针归零
 	pHead = pFront = pBack = nullptr;
 }
+
 #pragma endregion
 
 #pragma region 常规链表操作
@@ -155,4 +166,7 @@ void SLList::print() {
 	}
 	cout << "null" << endl;
 }
+
+#pragma endregion
+
 #pragma endregion

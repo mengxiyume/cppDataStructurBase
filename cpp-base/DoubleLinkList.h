@@ -1,10 +1,10 @@
 #pragma once
 
 //数据类型及相应指针命名
-typedef int SingleLinkListDataType, * pSingleLinkListDataType, SLData, * pSLData;
+typedef int DoubleLinkListDataType, * pDoubleLinkListDataType, DLData, * pDLData;
 
 /// <summary>
-/// 单链表类
+/// 双链表类
 /// <para>-结构-</para>
 /// <para><seealso cref="node - 一个链表节点"/></para>
 /// <para>-成员-</para>
@@ -16,8 +16,8 @@ typedef int SingleLinkListDataType, * pSingleLinkListDataType, SLData, * pSLData
 /// <para><seealso cref="getBack() - 获取尾节点"/></para>
 /// <para><seealso cref="print() - 打印链表"/></para>
 /// </summary>
-typedef class SingleLinkList {
-	//这是一个单链表类
+typedef class DoubleLinkList {
+	//这是一个双链表类
 public:
 
 	/// <summary>
@@ -27,14 +27,15 @@ public:
 	/// <para><remarks>next - 下一个节点的地址</remarks></para>
 	/// </summary>
 	typedef struct Node {
-		SLData data;		//节点存放的数据
+		DLData data;		//节点存放的数据
+		struct Node* prev;	//上一个节点的地址
 		struct Node* next;	//下一个节点的地址
 	}Node, node;
 
 #pragma region 构造相关重载
 
-	SingleLinkList();
-	~SingleLinkList();
+	DoubleLinkList();
+	~DoubleLinkList();
 
 #pragma endregion
 
@@ -44,12 +45,12 @@ public:
 	/// 从链表头部节点进行插入
 	/// </summary>
 	/// <param name="value">插入需要记录的值</param>
-	void pushFront(SLData value);
+	void pushFront(DLData value);
 	/// <summary>
 	/// 从链表尾部节点进行插入
 	/// </summary>
 	/// <param name="value">插入需要记录的值</param>
-	void pushBack(SLData value);
+	void pushBack(DLData value);
 
 	/// <summary>
 	/// 删除链表头的第一个有效节点
@@ -80,4 +81,4 @@ public:
 
 #pragma endregion
 
-}SLList, *pSLList;
+}DLList, *pDLList;

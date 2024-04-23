@@ -3,9 +3,13 @@
 #include <iostream>
 using namespace std;
 
-#include "SingleLinkList.h"
+#pragma region ≤‚ ‘¥˙¬Î
 
-int main() {
+#include "SingleLinkList.h"
+/// <summary>
+/// µ•¡¥±Ì≤‚ ‘
+/// </summary>
+void LinkListTest_01() {
 	SLList* sList = new SLList();
 
 	for (int i = 0; i < 10; i++) {
@@ -30,7 +34,47 @@ int main() {
 
 	delete(sList);
 	sList = nullptr;
+}
 
+#include "DoubleLinkList.h"
+/// <summary>
+/// À´¡¥±Ì≤‚ ‘
+/// </summary>
+void LinkListTest_02() {
+	DLList* dList = new DLList();
+
+	for (int i = 0; i < 10; i++) {
+		dList->pushBack(i + 1);
+	}
+	dList->print();
+
+	for (int i = 0; i < 10; i++) {
+		dList->popBack();
+	}
+	dList->print();
+
+	for (int i = 0; i < 10; i++) {
+		dList->pushFront(i + 1);
+	}
+	dList->print();
+
+	for (int i = 0; i < 10; i++) {
+		dList->popFront();
+	}
+	dList->print();
+
+	delete(dList);
+	dList = nullptr;
+}
+
+#pragma endregion
+
+int main() {
+	
+	LinkListTest_01();
+	LinkListTest_02();
+	
 	//cout << "Hello DataStructur!" << endl;
+
 	return 0;
 }

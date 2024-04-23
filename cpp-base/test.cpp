@@ -8,12 +8,29 @@ using namespace std;
 int main() {
 	SLList* sList = new SLList();
 
-	sList->pushBack(1);
-	cout << sList->getBack()->data << endl;
+	for (int i = 0; i < 10; i++) {
+		sList->pushBack(i + 1);
+	}
+	sList->print();
+
+	for (int i = 0; i < 10; i++) {
+		sList->popBack();
+	}
+	sList->print();
+
+	for (int i = 0; i < 10; i++) {
+		sList->pushFront(i + 1);
+	}
+	sList->print();
+
+	for (int i = 0; i < 10; i++) {
+		sList->popFront();
+	}
+	sList->print();
 
 	delete(sList);
 	sList = nullptr;
 
-	cout << "Hello DataStructur!" << endl;
+	//cout << "Hello DataStructur!" << endl;
 	return 0;
 }

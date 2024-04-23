@@ -4,6 +4,9 @@
 
 #include <cstdlib>
 #include <cassert>
+#include <iostream>
+using namespace std;
+
 #include "SingleLinkList.h"
 
 
@@ -79,7 +82,7 @@ void SLList::pushBack(SLData value) {
 	prevNode->next = newNode;
 
 	//其他记录指针的处理
-	pFront = pHead != nullptr ? pHead : newNode;	//首节点的更新
+	pFront = pFront != nullptr ? pFront : newNode;	//首节点的更新
 	pBack = newNode;								//尾节点的更新
 }
 
@@ -141,4 +144,13 @@ SLList::node* SLList::getBack() {
 
 //TODO:	删除指定节点
 
+//TODO:打印当前链表内所有数据
+void SLList::print() {
+	node* curNode = pFront;
+	while (curNode != nullptr) {
+		cout << curNode->data << " -> ";
+		curNode = curNode->next;
+	}
+	cout << "null" << endl;
+}
 #pragma endregion

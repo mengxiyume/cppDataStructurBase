@@ -58,6 +58,10 @@ public:
 	/// <returns>节点指针 | 无有效节点时返回nullptr</returns>
 	node* getBack();
 
+	/// <summary>
+	/// 将链表中的内容打印
+	/// </summary>
+	void print();
 #pragma endregion
 
 private:

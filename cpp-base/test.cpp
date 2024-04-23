@@ -5,7 +5,10 @@ using namespace std;
 
 #pragma region ≤‚ ‘¥˙¬Î
 
-#include "SingleLinkList.h"
+#pragma region ¡¥±Ì
+//LinkList
+
+#include "./LinkList/SingleLinkList.h"
 /// <summary>
 /// µ•¡¥±Ì≤‚ ‘
 /// </summary>
@@ -36,7 +39,7 @@ void LinkListTest_01() {
 	sList = nullptr;
 }
 
-#include "DoubleLinkList.h"
+#include "./LinkList/DoubleLinkList.h"
 /// <summary>
 /// À´¡¥±Ì≤‚ ‘
 /// </summary>
@@ -67,8 +70,8 @@ void LinkListTest_02() {
 	dList = nullptr;
 }
 
-/*
-#include "LinkList.h"
+
+#include "./LinkList/LinkList.h"
 void LinkListTest_03() {
 	LList* lList = new LList();
 
@@ -95,10 +98,10 @@ void LinkListTest_03() {
 	delete(lList);
 	lList = nullptr;
 }
-*/
 
+/*
 #define _SINGLELINK_
-#include "LinkList.h"
+#include "./LinkList/LinkList.h"
 void LinkListTest_04() {
 	LList* lList = new LList();
 
@@ -126,15 +129,31 @@ void LinkListTest_04() {
 	lList = nullptr;
 }
 #undef _SINGLELINK_
+*/
+
+#pragma endregion
+
+#pragma region À≥–Ú±Ì
+//SequenceTable
+
+void SequeneceTableTest_01() {
+
+}
+
+#pragma endregion
+
 
 #pragma endregion
 
 int main() {
 	
+	#pragma region ¡¥±Ì
 	//LinkListTest_01();
 	//LinkListTest_02();
 	//LinkListTest_03();
-	LinkListTest_04();
+	//LinkListTest_04();
+	#pragma endregion
+
 	
 	//cout << "Hello DataStructur!" << endl;
 

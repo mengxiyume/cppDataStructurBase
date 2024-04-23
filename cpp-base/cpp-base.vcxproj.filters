@@ -16,26 +16,32 @@
     <Filter Include="LinkList">
       <UniqueIdentifier>{21290ef4-6411-4079-8b2e-d6863a1caf65}</UniqueIdentifier>
     </Filter>
+    <Filter Include="LinkList\head">
+      <UniqueIdentifier>{2c4ea6ed-2f72-473a-8baa-a8015c3e70bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LinkList\sourse">
+      <UniqueIdentifier>{97b714c5-5b0b-4876-bdc5-caf93f83d121}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="SingleLinkList.cpp">
-      <Filter>LinkList</Filter>
+    <ClCompile Include="LinkList\SingleLinkList.cpp">
+      <Filter>LinkList\sourse</Filter>
     </ClCompile>
-    <ClCompile Include="DoubleLinkList.cpp">
-      <Filter>LinkList</Filter>
+    <ClCompile Include="LinkList\DoubleLinkList.cpp">
+      <Filter>LinkList\sourse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SingleLinkList.h">
-      <Filter>LinkList</Filter>
+    <ClInclude Include="LinkList\DoubleLinkList.h">
+      <Filter>LinkList\head</Filter>
     </ClInclude>
-    <ClInclude Include="DoubleLinkList.h">
-      <Filter>LinkList</Filter>
+    <ClInclude Include="LinkList\SingleLinkList.h">
+      <Filter>LinkList\head</Filter>
     </ClInclude>
-    <ClInclude Include="LinkList.h">
+    <ClInclude Include="LinkList\LinkList.h">
       <Filter>LinkList</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,11 +10,14 @@ typedef int SingleLinkListDataType, SLData;
 /// <para>-成员-</para>
 /// <para><seealso cref="pushFront() - 头插"/></para>
 /// <para><seealso cref="pushBack() - 尾插"/></para>
+/// <para><seealso cref="insert() - 插入"/></para>
 /// <para><seealso cref="popFront() - 头删"/></para>
 /// <para><seealso cref="popBack() - 尾删"/></para>
-/// <para><seealso cref="getFront() - 获取头节点"/></para>
-/// <para><seealso cref="getBack() - 获取尾节点"/></para>
+/// <para><seealso cref="del() - 删除"/></para>
+/// <para><seealso cref="getPos() - 获取指定节点"/></para>
 /// <para><seealso cref="print() - 打印链表"/></para>
+/// <para><seealso cref="front - 链表第一个有效节点"/></para>
+/// <para><seealso cref="back - 链表最后一个有效节点"/></para>
 /// </summary>
 typedef class SingleLinkList {
 	//这是一个单链表类
@@ -58,6 +61,20 @@ public:
 	/// </summary>
 	/// <param name="value">插入需要记录的值</param>
 	void pushBack(SLData value);
+	/// <summary>
+	/// 在指定节点后插入数据
+	/// <para>*节点无效时报错*</para>
+	/// </summary>
+	/// <param name="prev">指定节点的指针 | nullptr 代表插入坐标第零个节点</param>
+	/// <param name="value">插入需要记录的值</param>
+	void insert(node* prev, SLData value);
+	/// <summary>
+	/// 在指定坐标插入节点
+	/// <para>*坐标无效时报错*</para>
+	/// </summary>
+	/// <param name="position">指定节点的坐标  /*以偏移量形式*/</param>
+	/// <param name="value">插入需要记录的值</param>
+	void insert(size_t position, SLData value);
 
 	/// <summary>
 	/// 删除链表头的第一个有效节点
@@ -69,6 +86,18 @@ public:
 	/// <para>*无节点时报错*</para>
 	/// </summary>
 	void popBack();
+	/// <summary>
+	/// 删除指定节点
+	/// <para>*节点无效时报错*</para>
+	/// </summary>
+	/// <param name="delNode">指定节点的指针</param>
+	void del(node* delNode);
+	/// <summary>
+	/// 删除指定节点
+	/// <para>*坐标无效时报错*</para>
+	/// </summary>
+	/// <param name="position">指定节点的坐标  /*以偏移量形式*/</param>
+	void del(size_t position);
 
 	///// <summary>
 	///// 获取当前链表的第一个有效节点
@@ -80,6 +109,14 @@ public:
 	///// </summary>
 	///// <returns>节点指针 | 无有效节点时返回nullptr</returns>
 	//node* getBack();
+
+	/// <summary>
+	/// 获取指定节点
+	/// <para>*坐标无效时报错*</para>
+	/// </summary>
+	/// <param name="position">节点的坐标 /*以偏移量形式*/</param>
+	/// <returns></returns>
+	node* getPos(size_t position);
 
 	/// <summary>
 	/// 将链表中的内容打印

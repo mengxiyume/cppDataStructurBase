@@ -101,6 +101,28 @@ void SLList::pushBack(SLData value) {
 	this->front = pFront = pFront != nullptr ? pFront : newNode;	//首节点的更新
 	this->back = pBack = newNode;									//尾节点的更新
 }
+/// <summary>
+/// 在指定节点后插入数据
+/// <para>*节点无效时报错*</para>
+/// </summary>
+/// <param name="prev">指定节点的指针 | nullptr 代表插入坐标第零个节点</param>
+/// <param name="value">插入需要记录的值</param>
+void SLList::insert(node* prev, SLData value) {
+	//TODO:	根据数据查找节点
+	//非本链表节点无效
+	_wassert(_CRT_WIDE("传入节点无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
+}
+/// <summary>
+/// 在指定坐标插入节点
+/// <para>*坐标无效时报错*</para>
+/// </summary>
+/// <param name="position">指定节点的坐标  /*以偏移量形式*/</param>
+/// <param name="value">插入需要记录的值</param>
+void SLList::insert(size_t position, SLData value) {
+	//越界无效
+	_wassert(_CRT_WIDE("指定坐标无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
+}
+
 
 /// <summary>
 /// 删除链表头的第一个有效节点
@@ -140,6 +162,30 @@ void SLList::popBack() {
 	this->front = pFront = pHead->next;							//首节点的更新
 	this->back = pBack = last;									//尾节点的更新
 }
+/// <summary>
+/// 删除指定节点
+/// <para>*节点无效时报错*</para>
+/// </summary>
+/// <param name="delNode">指定节点的指针</param>
+/// <summary>
+/// 删除指定节点
+/// <para>*节点无效时报错*</para>
+/// </summary>
+/// <param name="delNode">指定节点的指针</param>
+void SLList::del(node* delNode) {
+	//TODO:	删除指定节点
+	//非本链表节点无效
+	_wassert(_CRT_WIDE("传入节点无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
+}
+/// <summary>
+/// 删除指定节点
+/// <para>*坐标无效时报错*</para>
+/// </summary>
+/// <param name="position">指定节点的坐标  /*以偏移量形式*/</param>
+void SLList::del(size_t position) {
+	//越界无效
+	_wassert(_CRT_WIDE("指定坐标无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
+}
 
 ///// <summary>
 ///// 获取当前链表的第一个有效节点
@@ -156,9 +202,17 @@ void SLList::popBack() {
 //	return pBack;
 //}
 
-//TODO:	根据数据查找节点
-
-//TODO:	删除指定节点
+/// <summary>
+/// 获取指定节点
+/// <para>*坐标无效时报错*</para>
+/// </summary>
+/// <param name="position">节点的坐标 /*以偏移量形式*/</param>
+/// <returns></returns>
+SLList::node* SLList::getPos(size_t position) {
+	//TODO:获取指定节点指针
+	return nullptr;
+	_wassert(_CRT_WIDE("指定坐标无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
+}
 
 /// <summary>
 /// 将链表中的内容打印

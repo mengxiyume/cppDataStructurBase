@@ -104,13 +104,36 @@ void DLList::pushBack(DLData value) {
 	this->front = pHead->next;
 	this->back = pHead->prev;
 }
+/// <summary>
+/// 在指定节点后插入数据
+/// <para>*节点无效时报错*</para>
+/// </summary>
+/// <param name="prev">指定节点的指针 | nullptr 代表插入坐标第零个节点</param>
+/// <param name="value">插入需要记录的值</param>
+void DLList::insert(node* prev, DLData value) {
+	//TODO:	根据数据查找节点
+	//非本链表节点无效
+	_wassert(_CRT_WIDE("传入节点无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
+}
+/// <summary>
+/// 在指定坐标插入节点
+/// <para>*坐标无效时报错*</para>
+/// </summary>
+/// <param name="position">指定节点的坐标  /*以偏移量形式*/</param>
+/// <param name="value">插入需要记录的值</param>
+void DLList::insert(size_t position, DLData value) {
+	//越界无效
+	_wassert(_CRT_WIDE("指定坐标无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
+}
 
 /// <summary>
 /// 删除链表头的第一个有效节点
 /// <para>*无节点时报错*</para>
 /// </summary>
 void DLList::popFront() {
-	assert(pHead->next != pHead);
+	//有效性判断
+	if (pHead->next != pHead)
+		_wassert(_CRT_WIDE("无可删除节点"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
 
 	node* delNode = pHead->next;
 	//节点剔除
@@ -129,7 +152,9 @@ void DLList::popFront() {
 /// <para>*无节点时报错*</para>
 /// </summary>
 void DLList::popBack() {
-	assert(pHead->next != pHead);
+	//有效性判断
+	if (pHead->prev != pHead)
+		_wassert(_CRT_WIDE("无可删除节点"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
 
 	node* delNode = pHead->prev;
 	//节点剔除
@@ -142,6 +167,25 @@ void DLList::popBack() {
 	//表面值更新
 	this->front = pHead->next != pHead ? pHead->next : nullptr;
 	this->back = pHead->next != pHead ? pHead->prev : nullptr;
+}
+/// <summary>
+/// 删除指定节点
+/// <para>*节点无效时报错*</para>
+/// </summary>
+/// <param name="delNode">指定节点的指针</param>
+void DLList::del(node* delNode) {
+	//TODO:	删除指定节点
+	//非本链表节点无效
+	_wassert(_CRT_WIDE("传入节点无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
+}
+/// <summary>
+/// 删除指定节点
+/// <para>*坐标无效时报错*</para>
+/// </summary>
+/// <param name="position">指定节点的坐标  /*以偏移量形式*/</param>
+void DLList::del(size_t position) {
+	//越界无效
+	_wassert(_CRT_WIDE("指定坐标无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
 }
 
 ///// <summary>
@@ -159,9 +203,17 @@ void DLList::popBack() {
 //	return pHead->prev;
 //}
 
-//TODO:	根据数据查找节点
-
-//TODO:	删除指定节点
+/// <summary>
+/// 获取指定节点
+/// <para>*坐标无效时报错*</para>
+/// </summary>
+/// <param name="position">节点的坐标 /*以偏移量形式*/</param>
+/// <returns></returns>
+DLList::node* DLList::getPos(size_t position) {
+	//TODO:获取指定节点指针
+	return nullptr;
+	_wassert(_CRT_WIDE("指定坐标无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
+}
 
 /// <summary>
 /// 将链表中的内容打印

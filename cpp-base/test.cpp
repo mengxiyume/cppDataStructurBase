@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 
+#include <cassert>
 #include <iostream>
 using namespace std;
 
@@ -139,7 +140,8 @@ void LinkListTest_04() {
 #include "./SequenceTable/SequenceTable.h"
 
 void SequeneceTableTest_01() {
-
+	//STable st = *new STable();
+	
 }
 
 #pragma endregion
@@ -156,7 +158,7 @@ int main() {
 	//LinkListTest_04();
 	#pragma endregion
 
-	
+	//_wassert(_CRT_WIDE("节点无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
 	//cout << "Hello DataStructur!" << endl;
 
 	return 0;

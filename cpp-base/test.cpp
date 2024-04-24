@@ -153,7 +153,7 @@ void LinkListTest_05() {
 	lList->del((size_t)0);
 	lList->print();
 
-	//观察到的状态应为删除或新增数据到指定下标，与上面的测试结果相同
+	//观察到的状态应为删除或新增数据到指定下标，与上面的测试结果表现相同
 	cout << lList->getPos((size_t)5)->data << endl;
 	lList->del(lList->getPos(5));
 	lList->print();
@@ -188,10 +188,10 @@ int main() {
 	//LinkListTest_02();
 	//LinkListTest_03();
 	//LinkListTest_04();
-	LinkListTest_05();
+	//LinkListTest_05();
 	#pragma endregion
 
-	//_wassert(_CRT_WIDE("节点无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
+
 	//cout << "Hello DataStructur!" << endl;
 
 	return 0;

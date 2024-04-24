@@ -16,9 +16,9 @@ typedef int SingleLinkListDataType, SLData;
 /// <para><seealso cref="del() - 删除"/></para>
 /// <para><seealso cref="getPos() - 获取指定节点"/></para>
 /// <para><seealso cref="print() - 打印链表"/></para>
-/// <para><seealso cref="front - 链表第一个有效节点"/></para>
-/// <para><seealso cref="back - 链表最后一个有效节点"/></para>
-/// <para><seealso cref="size - 链表有效节点的数量"/></para>
+/// <para><seealso cref="m_pFront - 链表第一个有效节点"/></para>
+/// <para><seealso cref="m_pBack - 链表最后一个有效节点"/></para>
+/// <para><seealso cref="m_nSize - 链表有效节点的数量"/></para>
 /// </summary>
 typedef class SingleLinkList {
 	//这是一个单链表类

@@ -117,7 +117,7 @@ void SLList::pushBack(SLData value) {
 /// 在指定节点前插入数据
 /// <para>*节点无效时报错*</para>
 /// </summary>
-/// <param name="prev">指定节点的指针 | nullptr 代表插入坐标第零个节点</param>
+/// <param name="next">指定节点的指针 | nullptr 代表插入坐标第零个节点</param>
 /// <param name="value">插入需要记录的值</param>
 void SLList::insert(node* next, SLData value) {
 	//TODO:	根据数据查找节点

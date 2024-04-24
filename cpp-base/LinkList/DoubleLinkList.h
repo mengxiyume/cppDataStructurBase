@@ -16,9 +16,9 @@ typedef int DoubleLinkListDataType, DLData;
 /// <para><seealso cref="del() - 删除"/></para>
 /// <para><seealso cref="getPos() - 获取指定节点"/></para>
 /// <para><seealso cref="print() - 打印链表"/></para>
-/// <para><seealso cref="front - 链表第一个有效节点"/></para>
-/// <para><seealso cref="back - 链表最后一个有效节点"/></para>
-/// <para><seealso cref="size - 链表有效节点的数量"/></para>
+/// <para><seealso cref="m_pFront - 链表第一个有效节点"/></para>
+/// <para><seealso cref="m_pBack - 链表最后一个有效节点"/></para>
+/// <para><seealso cref="m_nSize - 链表有效节点的数量"/></para>
 /// </summary>
 typedef class DoubleLinkList {
 	//这是一个双链表类
@@ -68,7 +68,7 @@ public:
 	/// 在指定节点前插入数据
 	/// <para>*节点无效时报错*</para>
 	/// </summary>
-	/// <param name="prev">指定节点的指针 | nullptr 代表插入坐标第零个节点</param>
+	/// <param name="next">指定节点的指针 | nullptr 代表插入坐标第零个节点</param>
 	/// <param name="value">插入需要记录的值</param>
 	void insert(node* next, DLData value);
 	/// <summary>

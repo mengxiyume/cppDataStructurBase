@@ -5,28 +5,30 @@
 #include <cstdlib>
 #include <cassert>
 #include <iostream>
-using namespace std;
 
 #include "SingleLinkList.h"
 
-#pragma region private
+#define assert_set(expression, str) (void)(                                          \
+            (!!(expression)) ||                                                      \
+            (_wassert(_CRT_WIDE(str), _CRT_WIDE(__FILE__), (unsigned)(__LINE__)), 0) \
+        )
 
-SLList::node* pHead;	//链表头
-SLList::node* pFront;	//链表第一个有效节点
-SLList::node* pBack;	//链表最后一个有效节点
+#pragma region private
 
 /// <summary>
 /// 申请一个链表节点
 /// <para>*申请失败报错*</para>
 /// </summary>
 /// <returns>已申请的节点</returns>
-SLList::node* buyOneNode() {
+SLList::node* SLList::buyOneNode() {
 	SLList::node* temp = (SLList::node*)malloc(sizeof(SLList::node));
 	assert(temp);
 	return temp;
 }
 
 #pragma endregion
+
+//FIXME:改动结构时对size的更新
 
 #pragma region public
 
@@ -41,8 +43,11 @@ SLList::SingleLinkList() {
 	pFront = nullptr;
 	pBack = nullptr;
 
-	this->front = nullptr;
-	this->back = nullptr;
+	this->m_pFront = nullptr;
+	this->m_pBack = nullptr;
+
+	nodeCount = 0;
+	this->m_nSize = 0;
 }
 
 SLList::~SingleLinkList() {
@@ -58,8 +63,11 @@ SLList::~SingleLinkList() {
 
 	//所有记录指针归零
 	pHead = pFront = pBack = nullptr;
-	this->front = nullptr;
-	this->back = nullptr;
+	this->m_pFront = nullptr;
+	this->m_pBack = nullptr;
+
+	nodeCount = 0;
+	this->m_nSize = 0;
 }
 
 #pragma endregion
@@ -80,8 +88,10 @@ void SLList::pushFront(SLData value) {
 	pHead->next = newNode;
 
 	//其他记录指针的处理
-	this->front = pFront = pHead->next;							//首节点的更新
-	this->back = pBack = pBack != nullptr ? pBack : newNode;	//尾节点的更新
+	this->m_pFront = pFront = pHead->next;							//首节点的更新
+	this->m_pBack = pBack = pBack != nullptr ? pBack : newNode;	//尾节点的更新
+	nodeCount++;
+	this->m_nSize = nodeCount;
 }
 /// <summary>
 /// 从链表尾部节点进行插入
@@ -98,19 +108,26 @@ void SLList::pushBack(SLData value) {
 	prevNode->next = newNode;
 
 	//其他记录指针的处理
-	this->front = pFront = pFront != nullptr ? pFront : newNode;	//首节点的更新
-	this->back = pBack = newNode;									//尾节点的更新
+	this->m_pFront = pFront = pFront != nullptr ? pFront : newNode;	//首节点的更新
+	this->m_pBack = pBack = newNode;									//尾节点的更新
+	nodeCount++;
+	this->m_nSize = nodeCount;
 }
 /// <summary>
-/// 在指定节点后插入数据
+/// 在指定节点前插入数据
 /// <para>*节点无效时报错*</para>
 /// </summary>
 /// <param name="prev">指定节点的指针 | nullptr 代表插入坐标第零个节点</param>
 /// <param name="value">插入需要记录的值</param>
-void SLList::insert(node* prev, SLData value) {
+void SLList::insert(node* next, SLData value) {
 	//TODO:	根据数据查找节点
 	//非本链表节点无效
-	_wassert(_CRT_WIDE("传入节点无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
+	assert_set(0, "传入节点无效");
+
+	//this->front = pFront = pFront != nullptr ? pFront : newNode;	//首节点的更新
+	//this->back = pBack = newNode;									//尾节点的更新
+	nodeCount++;
+	this->m_nSize = nodeCount;
 }
 /// <summary>
 /// 在指定坐标插入节点
@@ -120,9 +137,13 @@ void SLList::insert(node* prev, SLData value) {
 /// <param name="value">插入需要记录的值</param>
 void SLList::insert(size_t position, SLData value) {
 	//越界无效
-	_wassert(_CRT_WIDE("指定坐标无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
-}
+	assert_set(0, "指定坐标无效");
 
+	//this->front = pFront = pFront != nullptr ? pFront : newNode;	//首节点的更新
+	//this->back = pBack = newNode;									//尾节点的更新
+	nodeCount++;
+	this->m_nSize = nodeCount;
+}
 
 /// <summary>
 /// 删除链表头的第一个有效节点
@@ -138,8 +159,10 @@ void SLList::popFront() {
 	free(pFront);
 
 	//其他记录指针的处理
-	this->front = pFront = pHead->next;							//首节点的更新
-	this->back = pBack = pFront != nullptr ? pBack : nullptr;	//尾节点的更新
+	this->m_pFront = pFront = pHead->next;							//首节点的更新
+	this->m_pBack = pBack = pFront != nullptr ? pBack : nullptr;	//尾节点的更新
+	nodeCount++;
+	this->m_nSize = nodeCount;
 }
 /// <summary>
 /// 删除链表的最后一个有效节点
@@ -159,8 +182,10 @@ void SLList::popBack() {
 	last->next = nullptr;
 
 	//其他记录指针的处理
-	this->front = pFront = pHead->next;							//首节点的更新
-	this->back = pBack = last;									//尾节点的更新
+	this->m_pFront = pFront = pHead->next;							//首节点的更新
+	this->m_pBack = pBack = last;									//尾节点的更新
+	nodeCount++;
+	this->m_nSize = nodeCount;
 }
 /// <summary>
 /// 删除指定节点
@@ -175,7 +200,12 @@ void SLList::popBack() {
 void SLList::del(node* delNode) {
 	//TODO:	删除指定节点
 	//非本链表节点无效
-	_wassert(_CRT_WIDE("传入节点无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
+	assert_set(0, "传入节点无效");
+
+	this->m_pFront = pFront = pHead->next;							//首节点的更新
+	this->m_pBack = pBack = pFront != nullptr ? pBack : nullptr;	//尾节点的更新
+	nodeCount++;
+	this->m_nSize = nodeCount;
 }
 /// <summary>
 /// 删除指定节点
@@ -184,7 +214,12 @@ void SLList::del(node* delNode) {
 /// <param name="position">指定节点的坐标  /*以偏移量形式*/</param>
 void SLList::del(size_t position) {
 	//越界无效
-	_wassert(_CRT_WIDE("指定坐标无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
+	assert_set(0, "指定坐标无效");
+
+	this->m_pFront = pFront = pHead->next;							//首节点的更新
+	this->m_pBack = pBack = pFront != nullptr ? pBack : nullptr;	//尾节点的更新
+	nodeCount++;
+	this->m_nSize = nodeCount;
 }
 
 ///// <summary>
@@ -211,7 +246,7 @@ void SLList::del(size_t position) {
 SLList::node* SLList::getPos(size_t position) {
 	//TODO:获取指定节点指针
 	return nullptr;
-	_wassert(_CRT_WIDE("指定坐标无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));
+	assert_set(0, "指定坐标无效");
 }
 
 /// <summary>
@@ -220,10 +255,10 @@ SLList::node* SLList::getPos(size_t position) {
 void SLList::print() {
 	node* curNode = pFront;
 	while (curNode != nullptr) {
-		cout << curNode->data << " -> ";
+		std::cout << curNode->data << " -> ";
 		curNode = curNode->next;
 	}
-	cout << "null" << endl;
+	std::cout << "null" << std::endl;
 }
 
 #pragma endregion

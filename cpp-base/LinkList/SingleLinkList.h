@@ -18,6 +18,7 @@ typedef int SingleLinkListDataType, SLData;
 /// <para><seealso cref="print() - 打印链表"/></para>
 /// <para><seealso cref="front - 链表第一个有效节点"/></para>
 /// <para><seealso cref="back - 链表最后一个有效节点"/></para>
+/// <para><seealso cref="size - 链表有效节点的数量"/></para>
 /// </summary>
 typedef class SingleLinkList {
 	//这是一个单链表类
@@ -38,8 +39,9 @@ public:
 	* 请不要自行更改该指针指向的内容		//
 	* 表面值，更改不影响实际结构			//
 	* 调用内置函数更改结构后覆写 */			//
-	node* front;	//链表第一个有效节点	//
-	node* back;		//链表最后一个有效节点	//
+	node* m_pFront;	//链表第一个有效节点	//
+	node* m_pBack;	//链表最后一个有效节点	//
+	size_t m_nSize;	//链表有效节点的数量	//
 	/*--------------------------------------*/
 
 #pragma region 构造相关重载
@@ -62,12 +64,12 @@ public:
 	/// <param name="value">插入需要记录的值</param>
 	void pushBack(SLData value);
 	/// <summary>
-	/// 在指定节点后插入数据
+	/// 在指定节点前插入数据
 	/// <para>*节点无效时报错*</para>
 	/// </summary>
 	/// <param name="prev">指定节点的指针 | nullptr 代表插入坐标第零个节点</param>
 	/// <param name="value">插入需要记录的值</param>
-	void insert(node* prev, SLData value);
+	void insert(node* next, SLData value);
 	/// <summary>
 	/// 在指定坐标插入节点
 	/// <para>*坐标无效时报错*</para>
@@ -124,5 +126,19 @@ public:
 	void print();
 
 #pragma endregion
+
+private:
+
+	node* pHead = nullptr;		//链表头
+	node* pFront = nullptr;		//链表第一个有效节点
+	node* pBack = nullptr;		//链表最后一个有效节点
+	size_t nodeCount = 0;		//链表有效节点的数量
+
+	/// <summary>
+	/// 申请一个链表节点
+	/// <para>*申请失败报错*</para>
+	/// </summary>
+	/// <returns>已申请的节点</returns>
+	node* buyOneNode();
 
 }SLList;

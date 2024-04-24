@@ -132,6 +132,38 @@ void LinkListTest_04() {
 #undef _SINGLELINK_
 */
 
+void LinkListTest_05() {
+	//TODO:测试新接口,插入删除
+
+	LList* lList = new LList();
+
+	for (int i = 0; i < 10; i++) {
+		//输入下标
+		lList->pushBack(i);
+	}
+	lList->print();
+
+	//观察到的状态应为插入的数据在指定下标位置
+	lList->insert((size_t)0, 2333);
+	lList->insert((size_t)7, 2025);
+	lList->print();
+
+	//观察到的状态应为删除上次插入的数据
+	lList->del((size_t)7);
+	lList->del((size_t)0);
+	lList->print();
+
+	//观察到的状态应为删除或新增数据到指定下标，与上面的测试结果相同
+	cout << lList->getPos((size_t)5)->data << endl;
+	lList->del(lList->getPos(5));
+	lList->print();
+	lList->insert(lList->getPos(5), 1203);
+	lList->print();
+
+	lList->~DoubleLinkList();
+	lList = nullptr;
+}
+
 #pragma endregion
 
 #pragma region 顺序表
@@ -156,6 +188,7 @@ int main() {
 	//LinkListTest_02();
 	//LinkListTest_03();
 	//LinkListTest_04();
+	LinkListTest_05();
 	#pragma endregion
 
 	//_wassert(_CRT_WIDE("节点无效"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__));

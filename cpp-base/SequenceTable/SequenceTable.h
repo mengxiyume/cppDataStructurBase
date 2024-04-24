@@ -53,7 +53,7 @@ public:
 	/// </summary>
 	/// <param name="position">指定节点的坐标  /*以偏移量形式*/</param>
 	/// <param name="value">插入需要记录的值</param>
-	void insert(size_t position, DLData value);
+	void insert(size_t position, STData value);
 
 	/// <summary>
 	/// 删除顺序表的第零个数据

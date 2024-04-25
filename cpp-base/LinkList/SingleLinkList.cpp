@@ -239,10 +239,9 @@ void SLList::del(size_t position) {
 
 /// <summary>
 /// 获取指定节点
-/// <para>*坐标无效时报错*</para>
 /// </summary>
 /// <param name="position">节点的坐标 /*以偏移量形式*/</param>
-/// <returns></returns>
+/// <returns>查找到的节点的指针 | 未查找到时返回nullptr</returns>
 SLList::node* SLList::getPos(size_t position) {
 	//TODO:获取指定节点指针
 	return nullptr;

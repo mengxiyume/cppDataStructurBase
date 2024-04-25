@@ -35,14 +35,14 @@ public:
 		struct Node* next;	//下一个节点的地址
 	}Node, node;
 
-	/*--------------------------------------//
-	* 请不要自行更改该指针指向的内容		//
-	* 表面值，更改不影响实际结构			//
-	* 调用内置函数更改结构后覆写 */			//
-	node* m_pFront;	//链表第一个有效节点	//
-	node* m_pBack;	//链表最后一个有效节点	//
-	size_t m_nSize;	//链表有效节点的数量	//
-	/*--------------------------------------*/
+	/*----------------------------------------------//
+	* 请不要自行更改该指针指向的内容				//
+	* 表面值，更改不影响实际结构					//
+	* 调用内置函数更改结构后覆写 */					//
+	const node* m_pFront;	//链表第一个有效节点	//
+	const node* m_pBack;	//链表最后一个有效节点	//
+	size_t m_nSize;			//链表有效节点的数量	//
+	/*----------------------------------------------*/
 
 #pragma region 构造相关重载
 
@@ -67,7 +67,7 @@ public:
 	/// 在指定节点前插入数据
 	/// <para>*节点无效时报错*</para>
 	/// </summary>
-	/// <param name="prev">指定节点的指针 | nullptr 代表插入坐标第零个节点</param>
+	/// <param name="next">指定节点的指针 | nullptr 代表插入坐标第零个节点</param>
 	/// <param name="value">插入需要记录的值</param>
 	void insert(node* next, SLData value);
 	/// <summary>
@@ -114,10 +114,9 @@ public:
 
 	/// <summary>
 	/// 获取指定节点
-	/// <para>*坐标无效时报错*</para>
 	/// </summary>
 	/// <param name="position">节点的坐标 /*以偏移量形式*/</param>
-	/// <returns></returns>
+	/// <returns>查找到的节点的指针 | 未查找到时返回nullptr</returns>
 	node* getPos(size_t position);
 
 	/// <summary>

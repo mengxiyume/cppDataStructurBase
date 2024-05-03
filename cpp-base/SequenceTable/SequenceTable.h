@@ -2,18 +2,31 @@
 
 typedef int SequenceTableDataType, STDataType, STData;
 
+/// <summary>
+/// 顺序表类
+/// <para>-操作符-</para>
+/// <para><seealso cref="[] - 下标访问操作符"/></para>
+/// <para>-成员-</para>
+/// <para><seealso cref="pushFront() - 头插"/></para>
+/// <para><seealso cref="pushBack() - 尾插"/></para>
+/// <para><seealso cref="insert() - 插入"/></para>
+/// <para><seealso cref="popFront() - 头删"/></para>
+/// <para><seealso cref="popBack() - 尾删"/></para>
+/// <para><seealso cref="del() - 删除"/></para>
+/// <para><seealso cref="print() - 打印顺序表"/></para>
+/// <para><seealso cref="m_nSize - 顺序表有效数据的数量"/></para>
+/// </summary>
 typedef class SequenceTable {
-	//TODO:数据及接口的定义
 public:
 
-		/*--------------------------------------//
+	/*--------------------------------------//
 	* 请不要自行更改该指针指向的内容		//
 	* 表面值，更改不影响实际结构			//
 	* 调用内置函数更改结构后覆写 */			//
-	size_t size;		//有效数据的数量	//
+	size_t m_nSize;		//有效数据的数量	//
 	/*--------------------------------------*/
 
-	//TODO:插入、删除、查找、打印、构造、析构、重载 [ ] 下标操作符、重载操作符使其使用方式接近string类
+	//TODO:查找、重载操作符使其使用方式接近string类
 
 #pragma region 构造相关重载
 
@@ -65,6 +78,12 @@ public:
 	/// <para>*无数据时报错*</para>
 	/// </summary>
 	void popBack();
+	/// <summary>
+	/// 在指定坐标插入节点
+	/// <para>*节点无效时报错*</para>
+	/// </summary>
+	/// <param name="position">指定节点的坐标  /*以偏移量形式*/</param>
+	void del(size_t position);
 
 	/// <summary>
 	/// 将链表中的内容打印
@@ -72,6 +91,22 @@ public:
 	void print();
 
 #pragma endregion
+
+private:
+
+	STData* pData;		//数据存放的地址
+	size_t size;		//有效数据的数量
+	size_t capacity;	//指针结构的大小
+	
+	/// <summary>
+	/// 自动扩容
+	/// </summary>
+	void increase();
+	/// <summary>
+	/// 扩容
+	/// </summary>
+	/// <param name="isForce">true 时强制扩容 | false 时自动扩容</param>
+	void increase(bool isForce);
 
 	//...
 }STable;

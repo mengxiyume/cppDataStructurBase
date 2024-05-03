@@ -172,8 +172,39 @@ void LinkListTest_05() {
 #include "./SequenceTable/SequenceTable.h"
 
 void SequeneceTableTest_01() {
-	//STable st = *new STable();
-	
+	STable* st = new STable();
+
+	for (int i = 0; i < 10; i++) {
+		st->pushBack(i + 1);
+	}
+	st->print();
+	for (int i = 0; i < 10; i++) {
+		st->popBack();
+		st->print();
+	}
+	putchar('\n');
+
+	for (int i = 0; i < 10; i++) {
+		st->pushFront(i + 1);
+	}
+	st->print();
+	for (int i = 0; i < 10; i++) {
+		st->popFront();
+		st->print();
+	}
+	putchar('\n');
+
+	for (int i = 0; i < 10; i++) {
+		st->pushBack(i);
+	}
+	st->print();
+	st->insert(5, 555);
+	st->print();
+	st->del(5);
+	st->print();
+	cout << (*st)[4] << ' ' << (*st)[6] << endl;
+	delete(st);
+	st = nullptr;
 }
 
 #pragma endregion
@@ -189,6 +220,11 @@ int main() {
 	//LinkListTest_03();
 	//LinkListTest_04();
 	//LinkListTest_05();
+	#pragma endregion
+
+	#pragma region Ë³Ðò±í
+	SequeneceTableTest_01();
+
 	#pragma endregion
 
 

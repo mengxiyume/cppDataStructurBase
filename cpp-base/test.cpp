@@ -133,8 +133,6 @@ void LinkListTest_04() {
 */
 
 void LinkListTest_05() {
-	//TODO:测试新接口,插入删除
-
 	LList* lList = new LList();
 
 	for (int i = 0; i < 10; i++) {

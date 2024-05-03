@@ -129,9 +129,14 @@ public:
 
 private:
 
-	node* pHead = nullptr;	//链表头
+	node* pHead = nullptr;			//链表头
 	size_t nodeCount = 0;			//链表有效节点的数量
 
-	node* buyOneNode();
+	/// <summary>
+	/// 申请一个链表节点
+	/// <para>*申请失败报错*</para>
+	/// </summary>
+	/// <returns>已申请的节点</returns>
+	node* buyOneNode();				//获取一个链表节点
 
 }DLList;

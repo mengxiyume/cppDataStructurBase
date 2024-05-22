@@ -208,7 +208,7 @@ void DLList::popFront() {
 	//表面值更新
 	this->m_pFront	= pHead->next != pHead ? pHead->next : nullptr;
 	this->m_pBack	= pHead->next != pHead ? pHead->prev : nullptr;
-	nodeCount		++;
+	nodeCount		--;
 	this->m_nSize	= nodeCount;
 }
 /// <summary>
@@ -229,10 +229,10 @@ void DLList::popBack() {
 	delNode = nullptr;
 
 	//表面值更新
-	this->m_pFront = pHead->prev != pHead ? pHead->next : nullptr;
-	this->m_pBack = pHead->prev != pHead ? pHead->prev : nullptr;
-	m_nSize++;
-	this->m_nSize = nodeCount;
+	this->m_pFront	= pHead->prev != pHead ? pHead->next : nullptr;
+	this->m_pBack	= pHead->prev != pHead ? pHead->prev : nullptr;
+	m_nSize			--;
+	this->m_nSize	= nodeCount;
 }
 /// <summary>
 /// 删除指定节点
@@ -267,7 +267,7 @@ void DLList::del(node* delNode) {
 	//表面值更新
 	this->m_pFront	= pHead->next != pHead ? pHead->next : nullptr;
 	this->m_pBack	= pHead->next != pHead ? pHead->prev : nullptr;
-	nodeCount		++;
+	nodeCount		--;
 	this->m_nSize	= nodeCount;
 }
 /// <summary>
@@ -295,7 +295,7 @@ void DLList::del(size_t position) {
 	//表面值更新
 	this->m_pFront	= pHead->prev != pHead ? pHead->next : nullptr;
 	this->m_pBack	= pHead->prev != pHead ? pHead->prev : nullptr;
-	nodeCount		++;
+	nodeCount		--;
 	this->m_nSize	= nodeCount;
 }
 

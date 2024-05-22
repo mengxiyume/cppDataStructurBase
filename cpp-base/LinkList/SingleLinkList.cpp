@@ -28,8 +28,6 @@ SLList::node* SLList::buyOneNode() {
 
 #pragma endregion
 
-//FIXME:改动结构时对size的更新
-
 #pragma region public
 
 #pragma region 构造相关重载
